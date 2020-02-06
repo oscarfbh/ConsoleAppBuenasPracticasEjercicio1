@@ -12,7 +12,7 @@ namespace ConsoleAppBuenasPracticasEjercicio1ConSOLID
             IFileEventDateValidator fileEventDateValidator = new FileEventDateValidator();            
             string path = "C:\\CursoBuenasPracticasBOT\\ConsoleAppBuenasPracticasEjercicio1ConSOLID";
             string fileName = "Eventos.txt";
-            FileEventDateMessageCreator fileEventDateMessageCreator = new FileEventDateMessageCreator(clock, fileEventDateValidator);
+            IFileEventDateMessageCreator fileEventDateMessageCreator = new FileEventDateMessageCreator(clock, fileEventDateValidator);
             try
             {
                 List<string> eventMessages = fileEventDateMessageCreator.CreateEventMessages(path, fileName);

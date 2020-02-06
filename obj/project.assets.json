@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CursoBuenasPracticasBOT\\ConsoleAppBuenasPracticasEjercicio1ConSOLID\\ConsoleAppBuenasPracticasEjercicio1ConSOLID.csproj",
+      "projectUniqueName": "C:\\CursoBuenasPracticasBOT\\ConsoleAppBuenasPracticasEjercicio1\\ConsoleAppBuenasPracticasEjercicio1ConSOLID.csproj",
       "projectName": "ConsoleAppBuenasPracticasEjercicio1ConSOLID",
-      "projectPath": "C:\\CursoBuenasPracticasBOT\\ConsoleAppBuenasPracticasEjercicio1ConSOLID\\ConsoleAppBuenasPracticasEjercicio1ConSOLID.csproj",
+      "projectPath": "C:\\CursoBuenasPracticasBOT\\ConsoleAppBuenasPracticasEjercicio1\\ConsoleAppBuenasPracticasEjercicio1ConSOLID.csproj",
       "packagesPath": "C:\\Users\\oscar.baak\\.nuget\\packages\\",
-      "outputPath": "C:\\CursoBuenasPracticasBOT\\ConsoleAppBuenasPracticasEjercicio1ConSOLID\\obj\\",
+      "outputPath": "C:\\CursoBuenasPracticasBOT\\ConsoleAppBuenasPracticasEjercicio1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
