@@ -9,10 +9,11 @@ namespace ConsoleAppBuenasPracticasEjercicio1ConSOLID
         static void Main(string[] args)
         {
             IClock clock = new Clock();
-            IFileEventDateValidator fileEventDateValidator = new FileEventDateValidator();            
+            IFileEventDateValidator fileEventDateValidator = new FileEventDateValidator();
+            IFileEventDataReader fileEventDataReader = new FileEventDataReader();
             string path = "C:\\CursoBuenasPracticasBOT\\ConsoleAppBuenasPracticasEjercicio1ConSOLID";
             string fileName = "Eventos.txt";
-            IFileEventDateMessageCreator fileEventDateMessageCreator = new FileEventDateMessageCreator(clock, fileEventDateValidator);
+            IFileEventDateMessageCreator fileEventDateMessageCreator = new FileEventDateMessageCreator(clock, fileEventDateValidator, fileEventDataReader);
             try
             {
                 List<string> eventMessages = fileEventDateMessageCreator.CreateEventMessages(path, fileName);

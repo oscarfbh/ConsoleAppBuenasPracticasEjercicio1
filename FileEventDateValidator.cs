@@ -3,47 +3,63 @@ using System.IO;
 
 namespace ConsoleAppBuenasPracticasEjercicio1ConSOLID
 {
-    internal class FileEventDateValidator : IFileEventDateValidator
+    public class FileEventDateValidator : IFileEventDateValidator
     {
         public string ValidateFileExist(string path, string fileName)
         {
             string errorMessage = string.Empty;
-            string fullPath = ObtainFullPath(path);
-            string filePath;
-            if (string.IsNullOrWhiteSpace(fullPath))
+            string fullPath, filePath;
+
+            if (string.IsNullOrWhiteSpace(path))
             {
                 errorMessage = "La ruta proporcionada del archivo no existe.";
             }
-            else if (!Directory.Exists(fullPath))
-            {
-                errorMessage = string.Format("El directorio '{0}' no existe.", fullPath);
-            }
-            else if (string.IsNullOrWhiteSpace(fileName.Trim()))
-            {
-                errorMessage = "El nombre del archivo es incorrecto o vacío.";
-            }
             else
             {
-                filePath = string.Format("{0}\\{1}", fullPath, fileName.Trim());
+                fullPath = Path.GetFullPath(path);
+                fileName = fileName != null ? fileName.Trim() : fileName;
 
-                if (!File.Exists(filePath))
+                if (!CallDirectoryExistMethod(fullPath))
                 {
-                    errorMessage = string.Format("El archivo '{0}' no existe en la ruta '{1}'.", fileName, fullPath);
+                    errorMessage = string.Format("El directorio '{0}' no existe.", fullPath);
+                }
+                else if (string.IsNullOrWhiteSpace(fileName))
+                {
+                    errorMessage = "El nombre del archivo es incorrecto o vacío.";
+                }
+                else
+                {
+                    filePath = string.Format("{0}\\{1}", fullPath, fileName.Trim());
+
+                    if (!CallFileExistMethod(filePath))
+                    {
+                        errorMessage = string.Format("El archivo '{0}' no existe en la ruta '{1}'.", fileName, fullPath);
+                    }
                 }
             }
 
             return errorMessage;
         }
 
-        private static string ObtainFullPath(string path)
-        {
-            string fullPath = path;
-            if (!string.IsNullOrWhiteSpace(path))
-            {
-                fullPath = Path.GetFullPath(path);
-            }
 
-            return fullPath;
+        /// <summary>
+        /// Llama al método del directory del System.IO para verificar la existencia del directorio.
+        /// </summary>
+        /// <param name="fullPath">El directorio a verificar.</param>
+        /// <returns>Valor true si existe o false si no existe.</returns>
+        protected virtual bool CallDirectoryExistMethod(string fullPath)
+        {
+            return Directory.Exists(fullPath);
+        }
+
+        /// <summary>
+        /// Llama al método del directory del System.IO para verificar la existencia del directorio.
+        /// </summary>
+        /// <param name="filePath">el archivo con la ruta del directorio a verificar.</param>
+        /// <returns>Valor true si existe o false si no existe.</returns>
+        protected virtual bool CallFileExistMethod(string filePath)
+        {
+            return File.Exists(filePath);
         }
     }
 }
